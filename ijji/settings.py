@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "members.apps.MembersConfig",
+    "vods.apps.VodsConfig",
 ]
 
 MIDDLEWARE = [
@@ -145,8 +146,8 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=8),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
@@ -189,3 +190,56 @@ DATABASE_POOL_ARGS = {
     "pool_size": 5,
     "recycle": 300,
 }
+
+TAG_CHOICES = (
+    ("owcs", "Overwatch Championship Series"),
+    ("owl", "Overwatch League"),
+    ("owcn", "Overwatch Contenders"),
+    ("NA", "North America"),
+    ("EU", "Europe"),
+    ("EMEA", "Europe, Middle East, and Africa"),
+    ("TANK", "Tank"),
+    ("DPS", "Damage"),
+    ("SUP", "SUPPORT"),
+    ("Circus", "Circus")
+)
+
+MAP_CHOICES = (
+    # Control
+    ("Antarctic Peninsula", "Antarctic Peninsula"),
+    ("Ilios", "Ilios"),
+    ("Nepal", "Nepal"),
+    ("Samoa", "Samoa"),
+    ("Lijiang Tower", "Lijiang Tower"),
+    ("Oasis", "Oasis"),
+
+    # Escort
+    ("Circuit Royal", "Circuit Royal"),
+    ("Havana", "Havana"),
+    ("Rialto", "Rialto"),
+    ("Route 66", "Route 66"),
+    ("Dorado", "Dorado"),
+    ("Junkertown", "Junkertown"),
+    ("Watchpoint: Gibraltar", "Watchpoint: Gibraltar"),
+    ("Shambali Monastery", "Shambali Monastery"),
+    # Flash Point (Wtf is this?)
+    ("New Junk City", "New Junk City"),
+    ("Suravasa", "Suravasa"),
+    # Hybrid
+    ("Blizzard World", "Blizzard World"),
+    ("Eichenwalde", "Eichenwalde"),
+    ("Hollywood", "Hollywood"),
+    ("King's Row", "King's Row"),
+    ("Midtown", "Midtown"),
+    ("Paraiso", "Paraiso"),
+    # Push
+    ("Colosseo", "Colosseo"),
+    ("Esperanca", "Esperanca"),
+    ("New Queen Street", "New Queen Street"),
+)
+
+TEAM_CHOICES = (
+    # Left side custom lobby = blue team. Right side custom lobby = red team.
+    ("Blue", "Blue"),
+    ("Red", "Red")
+)

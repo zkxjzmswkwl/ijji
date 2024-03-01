@@ -2,6 +2,8 @@ from members.models import Member
 
 
 def get_member_by_id(member_id):
+    if type(member_id) == str:
+        member_id = int(member_id)
     return Member.objects.get(id=member_id)
 
 
